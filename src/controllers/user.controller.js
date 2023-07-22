@@ -27,8 +27,7 @@ const loginUser = async (req, res, next) => {
     const validPassword = isValidPassword(user, req.body.password);
 
     if (validPassword) {
-      const result = await updateUserService({ ...user, last_connection: new Date(Date.now()) })
-      console.log("🚀 ~ file: user.controller.js:31 ~ loginUser ~ result:", result)
+      await updateUserService({ ...user, last_connection: new Date(Date.now()) })
       const access_token = generateAuthToken(user.email, "12h");
       res.cookie("access_token", access_token);
 
@@ -132,7 +131,7 @@ const sendNewPassword = async (req, res, next) => {
 const logoutUser = async (req, res, next) => {
   try {
     const user = await loginLogoutUserService(req.user);
-    const result = await updateUserService({ ...user, last_connection: new Date(Date.now()) })
+    await updateUserService({ ...user, last_connection: new Date(Date.now()) })
     res.clearCookie("access_token");
     res.redirect("/login");
   } catch (error) {
