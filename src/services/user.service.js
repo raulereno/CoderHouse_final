@@ -61,11 +61,6 @@ const findUserService = async (user) => {
 const loginLogoutUserService = async (user) => {
   try {
     const userInDB = await userRepository.findUser(user);
-
-    userInDB.last_connection = new Date(Date.now())
-
-    await userRepository.updateUser(userInDB)
-
     return userInDB;
   } catch (error) {
     throw Error(error)
