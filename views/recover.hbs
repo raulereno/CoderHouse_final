@@ -1,0 +1,22 @@
+<div id="container_recover">
+
+    <form id="form_restart">
+        {{#if expired}}
+            <p style="color: red;">Link expirado, generarlo nuevamente</p>
+        {{/if}}
+        <p>Para restaurar su contraseña ingrese su email, un enlace de restauración sera enviado a su casilla de email
+        </p>
+        <div style="display: flex; flex-direction: column; align-items: center;">
+            <input type="email" name="username" id="input_restart_username" class="input_login"
+                placeholder="Ingresa tu email" required>
+            <div>
+                <span class="span_error" id="username_restart_error"></span>
+                <span> </span>
+            </div>
+        </div>
+
+        <button>Restaurar password</button>
+    </form>
+</div>
+
+<script src="/js/restartPass.js"></script>

@@ -1,0 +1,16 @@
+<div id="container_restorePass">
+    <form id="form_change_pass">
+        <p>Ingresa su nueva contraseña:</p>
+        <div style="display: flex; flex-direction: column;">
+            <input id="new_password" style="margin-bottom:15px;" type="password" autocomplete="off"
+                class="register_password" name="password" placeholder="Password" required>
+            <input id="new_password_repeat" type="password" autocomplete="off" class="register_password"
+                name="confirm_password" placeholder="Repeat password" required>
+            <input id="token_restore" type="text" hidden value={{token}}>
+        </div>
+        <span class="span_error password_error"></span>
+        <button>Cambiar contraseña</button>
+    </form>
+
+</div>
+<script src="/js/changePass.js"></script>

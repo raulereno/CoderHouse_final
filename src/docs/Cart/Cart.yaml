@@ -1,0 +1,269 @@
+paths:
+  # Ruta eliminada debido a que la creación del carrito se hace al registrarse un usuario.
+  # /cart:
+  #   post:
+  #     summary: Crea un nuevo carrito de compras
+  #     tags:
+  #       - Cart
+  #     responses:
+  #       "201":
+  #         description: Carrito de compras creado satisfactoriamente
+  #       "500":
+  #         description: Error interno del servidor.
+  /cart/{cid}:
+    get:
+      summary: Obtiene el carrito de compras
+      tags: 
+        - Cart
+      parameters:
+        - in: path
+          name: cid
+          required: true
+          description: ID del carrito de compras
+          schema:
+            type: string
+        - in: cookie
+          name: access_token
+          description: Token de acceso generado por jwt,sirve para detectar si el usuario esta logueado y si posee los permisos suficientes
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Carrito de compras obtenido satisfactoriamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+        "401":
+          description: No autorizado
+        "500":
+          description: Error interno del servidor.
+    put:
+      summary: Agrega múltiples productos al carrito de compras
+      tags:
+        - Cart
+      parameters:
+        - in: path
+          name: cid
+          required: true
+          description: ID del carrito de compras
+          schema:
+            type: string
+        - in: cookie
+          name: access_token
+          description: Token de acceso generado por jwt,sirve para detectar si el usuario esta logueado y si posee los permisos suficientes
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Productos agregados satisfactoriamente al carrito de compras
+        "401":
+          description: No autorizado
+        "500":
+          description: Error interno del servidor.
+    delete:
+      summary: Limpia un carrito de compras
+      tags:
+        - Cart
+      parameters:
+        - in: path
+          name: cid
+          required: true
+          description: ID del carrito de compras a limpiar
+          schema:
+            type: string
+        - in: cookie
+          name: access_token
+          description: Token de acceso generado por jwt,sirve para detectar si el usuario esta logueado y si posee los permisos suficientes
+          required: true
+          schema:
+            type: string  
+      responses:
+        "200":
+          description: Carrito de compras eliminado satisfactoriamente
+        "401":
+          description: No autorizado
+        "403":
+          description: No se es el propietario del carrito de compras
+        "500":
+          description: Error interno del servidor.      
+  /cart/{cid}/product/{pid}:
+    post:
+      summary: Agrega un producto al carrito de compras, si se es dueño del producto no se lo puede agregar a su propio carrito
+      tags:
+        - Cart
+      parameters:
+        - in: path
+          name: cid
+          required: true
+          description: ID del carrito de compras
+          schema:
+            type: string
+        - in: cookie
+          name: access_token
+          description: Token de acceso generado por jwt,sirve para detectar si el usuario esta logueado y si posee los permisos suficientes
+          required: true
+          schema:
+            type: string  
+        - in: path
+          name: pid
+          required: true
+          description: ID del producto a agregar
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Producto agregado satisfactoriamente al carrito de compras
+        "401":
+          description: No autorizado
+        "403":
+          description: No se es el propietario del carrito de compras
+        "500":
+          description: Error interno del servidor.
+    put:
+      summary: Modifica el numero de productos en el carrito, sino se es dueño del carrito no se puede modificar la cantidad de productos
+      tags:
+        - Cart
+      parameters:
+        - in: path
+          name: cid
+          required: true
+          description: ID del carrito de compras
+          schema:
+            type: string
+        - in: path
+          name: pid
+          required: true
+          description: ID del producto a agregar
+          schema:
+            type: string
+        - in: cookie
+          name: access_token
+          description: Token de acceso generado por jwt,sirve para detectar si el usuario esta logueado y si posee los permisos suficientes
+          required: true
+          schema:
+            type: string  
+      responses:
+        "200":
+          description: Producto agregado satisfactoriamente al carrito de compras
+        "401":
+          description: No autorizado
+        "403":
+          description: No se es el propietario del carrito de compras
+        "500":
+          description: Error interno del servidor.
+    delete:
+      summary: Elimina un producto del carrito de compras, sino se es dueño del carrito no se puede modificar la cantidad de productos
+      tags:
+        - Cart
+      parameters:
+        - in: path
+          name: cid
+          required: true
+          description: ID del carrito de compras
+          schema:
+            type: string
+        - in: path
+          name: pid
+          required: true
+          description: ID del producto a agregar
+          schema:
+            type: string
+        - in: cookie
+          name: access_token
+          required: true
+          schema:
+            type: string  
+      responses:
+        "200":
+          description: Producto agregado satisfactoriamente al carrito de compras
+        "401":
+          description: No autorizado
+        "403":
+          description: No se es el propietario del carrito de compras
+        "500":
+          description: Error interno del servidor.
+  /cart/{cid}/purchase:
+    get:
+      summary: Compra los productos dentro del carro, sino se es dueño del carrito no se puede realizar el checkout
+      parameters:
+        - in: cookie
+          name: access_token
+          required: true
+          schema:
+            type: string  
+      tags:
+        - Cart
+
+
+
+
+components:
+  schemas:
+    Cart:
+      type: object
+      properties:
+        products:
+          type: array
+          description: Lista de productos en el carrito
+          items:
+            type: object
+            properties:
+              product:
+                type: object
+                properties:
+                  _id:
+                    type: string
+                    description: ID del producto
+                    format: ObjectId
+                  title:
+                    type: string
+                    description: Título del producto
+                  description:
+                    type: string
+                    description: Descripción del producto
+                  category:
+                    type: string
+                    description: Categoría del producto
+                  price:
+                    type: number
+                    description: Precio del producto
+                  image:
+                    type: string
+                    description: URL de la imagen del producto
+                  owner:
+                    type: string
+                    description: Propietario del producto
+                  stock:
+                    type: integer
+                    description: Stock disponible del producto
+                  __v:
+                    type: integer
+                    description: Versión del producto
+              quantity:
+                type: number
+                description: Cantidad del producto en el carrito
+                default: 1
+          example:
+            - product:
+                _id: "647366b12ecab8dd5b4614e8"
+                title: "Comida para perros adultos"
+                description: "Comida balanceada para perros adultos"
+                category: "balanceado"
+                price: 1400
+                image: "https://www.mrpanet.org/global_graphics/default-store-350x350.jpg"
+                owner: "admin"
+                stock: 2
+                __v: 0
+              quantity: 2
+            - product:
+                _id: "1234567890abcdef"
+                title: "Otro producto"
+                description: "Descripción del otro producto"
+                category: "otra categoría"
+                price: 999
+                image: "https://www.example.com/image.jpg"
+                owner: "admin"
+                stock: 10
+                __v: 1
+              quantity: 1

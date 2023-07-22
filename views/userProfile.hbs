@@ -1,0 +1,80 @@
+<div id="container_profile">
+    <h2>Profile</h2>
+    <form action="" id="form_files">
+        <div>
+
+            {{#if user.documents.length}}
+            {{#checkFiles user.documents "identification"}}
+            <h3>Identificación: <span>✅</span></h3>
+            <label for="file_identification"> Editar archivo</label>
+            <span id="file-chosen_identification">Ya cargo un archivo</span>
+            {{else}}
+            <h3>Identificación:</h3>
+            <label for="file_identification"> Agregar archivo</label>
+            <span id="file-chosen_identification">Ningún archivo seleccionado</span>
+            {{/checkFiles}}
+            {{else}}
+            <h3>Identificación:</h3>
+            <label for="file_identification"> Agregar archivo</label>
+            <span id="file-chosen_identification">Ningún archivo seleccionado</span>
+            {{/if}}
+
+
+            <input hidden type="file" id="file_identification" accept=".doc,.docx,.pdf,.txt,.png,.jpeg">
+        </div>
+        
+        <div>
+            {{#if user.documents.length}}
+
+            {{#checkFiles user.documents "address"}}
+            <h3>Comprobante de domicilio: <span>✅</span></h3>
+            <label for="file_address"> Editar archivo</label>
+            <span id="file-chosen_address">Ya cargo un archivo</span>
+            {{else}}
+            <h3>Comprobante de domicilio:</h3>
+            <label for="file_address"> Agregar archivo</label>
+            <span id="file-chosen_address">Ningún archivo seleccionado</span>
+            {{/checkFiles}}
+            {{else}}
+            <h3>Comprobante de domicilio:</h3>
+            <label for="file_address"> Agregar archivo</label>
+            <span id="file-chosen_address">Ningún archivo seleccionado</span>
+            {{/if}}
+          
+
+            {{!-- <label for="file_address">Agregar archivo</label>
+            <span id="file-chosen_address">Ningún archivo seleccionado</span> --}}
+            <input hidden type="file" id="file_address" accept=".doc,.docx,.pdf,.txt,.png,.jpeg">
+
+        </div>
+        <div>
+
+
+            {{#if user.documents.length}}
+           
+            {{#checkFiles user.documents "statusCount"}}
+            <h3>Comprobante de estado de cuenta: <span>✅</span></h3>
+            <label for="file_status_count"> Editar archivo</label>
+            <span id="file-chosen_status_count">Ya cargo un archivo</span>
+            {{else}}
+            <h3>Comprobante de estado de cuenta:</h3>
+            <label for="file_status_count"> Agregar archivo</label>
+            <span id="file-chosen_status_count">Ningún archivo seleccionado</span>
+            {{/checkFiles}}
+            {{else}}
+            <h3>Comprobante de estado de cuenta:</h3>
+            <label for="file_status_count"> Agregar archivo</label>
+            <span id="file-chosen_status_count">Ningún archivo seleccionado</span>
+            {{/if}}
+
+
+
+            <input hidden type="file" id="file_status_count" accept=".doc,.docx,.pdf,.txt,.png,.jpeg">
+        </div>
+
+
+        <input type="text" hidden value={{user._id}} id="user_id">
+        <button type="submit">Enviar</button>
+    </form>
+</div>
+<script src="/js/profile.js"></script>

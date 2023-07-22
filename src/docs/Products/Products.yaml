@@ -1,0 +1,206 @@
+paths:
+  /products:
+    get:
+      summary: Obtiene todos los productos
+      tags: 
+        - Products
+      parameters:
+        - in: cookie
+          name: access_token
+          description: Token de acceso generado por jwt, detecta si el usuario esta logueado
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Los productos fueron obtenidos satisfactoriamente de la base de datos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+        "500":
+          description: Error interno del servidor.
+
+    post:
+      summary: Crea un nuevo producto
+      tags:
+        - Products
+      parameters:
+        - in: cookie
+          name: access_token
+          description: Token de acceso generado por jwt, detecta si el usuario esta logueado y si posee los permisos suficientes
+          schema:
+            type: string
+      consumes:
+        - application/json
+      requestBody:
+        description: Objeto que contiene el request body para postear un producto 
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/requestsBodies/postProduct"
+      responses:
+        "201":
+          description: El producto fue creado satisfactoriamente
+        "401":
+          description: No posee la autorización para realizar esta acción
+        "500":
+          description: Error interno del servidor.
+
+  /products/fulldb:
+    post:
+      summary: Crea múltiples productos a la vez
+      tags:
+        - Products
+      parameters:
+        - in: cookie
+          name: access_token
+          description: Token de acceso generado por jwt, detecta si el usuario esta logueado y si posee los permisos suficientes
+          schema:
+            type: string
+      responses:
+        "201":
+          description: Los productos fueron creados satisfactoriamente
+        "401":
+          description: No posee la autorización para realizar esta acción
+        "500":
+          description: Error interno del servidor.
+
+  /products/{pid}:
+    put:
+      summary: Actualiza un producto existente
+      tags:
+        - Products
+      parameters:
+        - in: path
+          name: pid
+          required: true
+          description: ID del producto a actualizar
+          schema:
+            type: string
+        - in: cookie
+          name: access_token
+          description: Token de acceso generado por jwt,sirve para detectar si el usuario esta logueado y si posee los permisos suficientes
+          schema:
+            type: string
+      requestBody:
+        description: Objeto que contiene el request body para postear un producto, no todos los campos son requeridos ya que es utilizado para modificar total o parcialmente el producto. 
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/requestsBodies/postProduct"
+      responses:
+        "200":
+          description: El producto fue actualizado satisfactoriamente
+        "401":
+          description: No posee la autorización para realizar esta acción
+        "500":
+          description: Error interno del servidor.
+
+    delete:
+      summary: Elimina un producto existente
+      tags:
+        - Products
+      parameters:
+        - in: path
+          name: pid
+          required: true
+          description: ID del producto a eliminar
+          schema:
+            type: string
+        - in: cookie
+          name: access_token
+          description: Token de acceso generado por jwt, detecta si el usuario esta logueado y si posee los permisos suficientes
+          schema:
+            type: string
+      responses:
+        "204":
+          description: El producto fue eliminado satisfactoriamente
+        "401":
+          description: No posee la autorización para realizar esta acción
+        "500":
+          description: Error interno del servidor.
+
+
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: Id autogenerado de mongo
+          example: "5451asd5a1sfsd5a15e"
+        title:
+          type: string
+          description: Título del producto
+          maxLength: 30
+        description:
+          type: string
+          description: Descripción del producto
+          maxLength: 100
+        category:
+          type: string
+          description: Categoría del producto
+          default: "general"
+        price:
+          type: number
+          description: Precio del producto
+        image:
+          type: string
+          description: URL de la imagen del producto
+          default: "https://www.mrpanet.org/global_graphics/default-store-350x350.jpg"
+        owner:
+          type: string
+          description: Propietario del producto
+          default: "admin"
+        stock:
+          type: number
+          description: Cantidad en stock del producto
+      required:
+        - title
+        - description
+        - price
+        - stock
+      example:
+        _id: ObjectId("5451asd5a1sfsd5a15e")
+        title: Camiseta
+        description: Camiseta de algodon
+        category: "Ropa"
+        price: 29.99
+        image: https://example.com/images/product.jpg
+        owner: John Doe
+        stock: 50
+  requestsBodies:
+    postProduct:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Título del producto
+          maxLength: 30
+        description:
+          type: string
+          description: Descripción del producto
+          maxLength: 100
+        category:
+          type: string
+          description: Categoría del producto
+          default: general
+        price:
+          type: number
+          description: Precio del producto
+        image:
+          type: string
+          description: URL de la imagen del producto
+          default: "https://www.mrpanet.org/global_graphics/default-store-350x350.jpg"
+        owner:
+          type: string
+          description: Propietario del producto
+          default: admin
+        stock:
+          type: number
+          description: Stock disponible del producto

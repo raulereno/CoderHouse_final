@@ -1,0 +1,24 @@
+<div id="container_register">
+    <form id="register_form">
+        <div>
+            <input type="text" class="input_register" name="email" placeholder="Email" required>
+            <span class="span_error username_error"></span>
+        </div>
+        <div>
+            <input type="text" class="input_register" name="username" placeholder="Username" required>
+            <span class="span_error username_error"></span>
+        </div>
+
+
+        <div>
+            <input style="margin-bottom:15px;" type="password" autocomplete="off" class="register_password"
+                name="password" placeholder="Password" required>
+            <input type="password" autocomplete="off" class="register_password" name="confirm_password"
+                placeholder="Repeat password" required>
+            <span class="span_error password_error"></span>
+        </div>
+        <button type="submit">REGISTRARSE</button>
+        <p>Ya posees una cuenta? <a href="/login">Inicia sesión</a></p>
+    </form>
+</div>
+<script src="/js/register.js"></script>

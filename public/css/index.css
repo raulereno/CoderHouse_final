@@ -1,0 +1,365 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#container_register,
+#container_login,
+#container_recover,
+#container_restorePass {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #292929;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#container_register form,
+#container_login form,
+#container_recover form,
+#container_restorePass form {
+
+  background-color: #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 500px;
+  gap: 10px;
+  padding: 25px;
+  border-radius: 5px;
+}
+#container_recover p {
+  text-align: center;
+}
+#container_recover form{
+  align-items: center;
+}
+#container_register form button,
+#container_login form button ,
+#container_recover form button,
+#container_restorePass form button
+{
+  background-color: #292929;
+  color: #f2f2f2;
+  padding: 5px 10px;
+}
+#container_register form div,
+#container_login form div {
+  display: flex;
+  flex-direction: column;
+}
+#container_register form input,
+#container_login form input {
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+}
+
+#form_files{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+#form_files button{
+  background-color: rgb(0, 0, 0);
+  color: white;
+  padding: 0.5rem;
+  font-family: sans-serif;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+#form_files div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+#form_files div label{
+  
+  background-color: rgb(0, 0, 0);
+  color: white;
+  padding: 0.5rem;
+  font-family: sans-serif;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  margin-top: 1rem;
+
+}
+
+.error {
+  border: 1px solid red;
+}
+.span_error {
+  color: red;
+}
+.success{
+  border: 1px solid green;
+}
+.span_success{
+  color: green;
+}
+
+#navbarNav .navbar-nav {
+  gap: 15px;
+}
+#navbarNav .navbar-nav .nav-item:hover {
+  background-color: rgba(128, 128, 128, 0.315);
+  border-radius: 5px;
+}
+#navbarNav #changeRolLink{
+  cursor: pointer;
+}
+#navbarNav .navbar-nav .nav-item:hover > .nav-link {
+  color: black;
+  font-weight: bolder;
+}
+#createProduct button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+.container_cart a svg {
+  width: 25px;
+  height: 25px;
+}
+/* Filters */
+#filters {
+  background-color: rgba(128, 128, 128, 0.169);
+  width: 20%;
+  padding: 15px;
+  max-height: 550px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  border-radius: 5px;
+}
+.categories {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.categories li a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px ;
+
+  background-color: rgba(128, 128, 128, 0.296);
+  padding: 5px;
+  text-decoration: none;
+  color: black;
+  border-radius: 5px;
+}
+.container_price_filter {
+  display: flex;
+  gap: 5px;
+  margin-top: 8px;
+}
+.container_price_filter a {
+  background-color: rgba(128, 128, 128, 0.274);
+  padding: 5px;
+  text-decoration: none;
+  color: black;
+  border-radius: 5px;
+}
+.clear_filters {
+  background-color: rgba(128, 128, 128, 0.274);
+  padding: 5px;
+  text-decoration: none;
+  color: black;
+  border-radius: 5px;
+}
+/* Pagination */
+.container_pagination {
+  margin-top: 10px;
+}
+.container_pagination .pagination a {
+  text-decoration: none;
+  color: black;
+}
+.container_pagination .pagination .disablePrevPage a {
+  display: none;
+}
+.container_pagination .pagination .disableNextPage a {
+  display: none;
+}
+.page-item.currentPage a {
+  background-color: grey;
+}
+/*  */
+#container_home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#container_home .pagination_products {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+#container_home .pagination_products .container_pagination {
+  align-self: center;
+}
+
+.filters_products {
+  display: flex;
+  width: 100%;
+  padding: 20px;
+}
+#container_products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-items: center;
+  gap: 15px;
+}
+
+#container_products .card img {
+  width: 100%;
+  height: 350px;
+  object-fit: contain;
+}
+#container_products .card .card-body {
+  align-items: center;
+  margin-bottom: 15px;
+}
+#container_products .card .card-body button {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+}
+ .icon_trash,
+.icon_pencil {
+  display: none;
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+.card .icon_pencil {
+  margin: 5px 0 0 5px;
+}
+.card .icon_pencil svg {
+  width: 20px;
+  height: 20px;
+  opacity: 0.8;
+}
+.card .icon_trash {
+  right: 0;
+  margin: 5px 5px 0 0;
+}
+ .icon_trash svg {
+  width: 20px;
+  height: 20px;
+  fill: rgb(134, 0, 0);
+  opacity: 0.8;
+}
+.icon_trash svg:hover,
+.icon_pencil svg:hover {
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+/* Cart View */
+#container_cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#clean_cart {
+  margin-bottom: 15px;
+}
+.deleteProduct {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+.deleteProduct svg {
+  width: 15px;
+  fill: white;
+}
+.total_count {
+  font-size: 30px;
+}
+
+.container_quantity button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+.container_quantity button svg {
+  width: 25px;
+  fill: white;
+}
+/* CHAT VIEW */
+#container_chat {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#chat_form {
+  background: rgba(0, 0, 0, 0.657);
+  padding: 0.25rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  height: 4rem;
+  box-sizing: border-box;
+  backdrop-filter: blur(10px);
+}
+#chat_form input {
+  border: none;
+  padding: 0 1rem;
+  border-radius: 2rem;
+  margin: 0.25rem;
+}
+#chat_form #user_email {
+  width: 350px;
+}
+#chat_form #user_message {
+  flex-grow: 1;
+}
+#chat_form input:focus {
+  outline: none;
+}
+#chat_form > button {
+  background: #333;
+  border: none;
+  padding: 0 1rem;
+  margin: 0.25rem;
+  border-radius: 3px;
+  outline: none;
+  color: #fff;
+}
+
+#messages {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: scroll;
+  padding-bottom: 80px;
+}
+#messages > li {
+  padding: 0.5rem 1rem;
+}
+#messages li svg {
+  width: 20px;
+  height: 20px;
+  margin-right: 3px;
+}
+#messages > li:nth-child(odd) {
+  background: #efefef;
+}

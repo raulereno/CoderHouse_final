@@ -1,0 +1,44 @@
+<aside id="filters">
+    <h2>Categorias</h2>
+    <ul class="categories">
+        <li><a
+                href="http://localhost:3001/products?query={{user.email}}&limit={{products.limit}}&sort={{products.sort}}">Mis productos</a>
+        </li>
+        <li><a
+                href="http://localhost:3001/products?query=balanceado&limit={{products.limit}}&sort={{products.sort}}">Balanceado</a>
+        </li>
+        <li><a
+                href="http://localhost:3001/products?query=accesorios&limit={{products.limit}}&sort={{products.sort}}">Accesorios</a>
+        </li>
+        <li><a
+                href="http://localhost:3001/products?query=farmacia&limit={{products.limit}}&sort={{products.sort}}">Farmacia</a>
+        </li>
+        <li><a
+                href="http://localhost:3001/products?query=general&limit={{products.limit}}&sort={{products.sort}}">General</a>
+        </li>
+        
+    </ul>
+
+    <h2>Filtros</h2>
+    <div>
+        <label for="">Cantidad de productos:</label>
+        <select name="" id="quantity_select">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+        </select>
+    </div>
+
+    <div class="container_price_filter">
+        <a href="http://localhost:3001/products?query={{products.query}}&limit={{products.limit}}&sort=asc">Menor
+            precio</a>
+        <a href="http://localhost:3001/products?query={{products.query}}&limit={{products.limit}}&sort=desc">Mayor
+            precio</a>
+    </div>
+
+
+    <a href="/products" class="clear_filters">Clear filter</a>
+
+</aside>
+<script src="/js/filters.js"></script>
