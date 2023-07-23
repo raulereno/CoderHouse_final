@@ -180,10 +180,10 @@ const cleanUsers = async (req, res, next) => {
   try {
     const result = await cleanOldUserService()
 
-
     res.status(200).send({
       status: "success",
       payload: "Usuarios eliminados",
+      deleteUsers: result
     });
   } catch (error) {
     next(error);

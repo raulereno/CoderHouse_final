@@ -23,6 +23,16 @@ class UserRepository {
     }
   }
 
+  async deleteUser(user) {
+    try {
+      const result = await userDao.deleteUser(user)
+      return result
+    } catch (error) {
+      throw Error(error)
+
+    }
+  }
+
   async getUserByUsername(username) {
     try {
       const result = await userDao.getUserByUsername(username);

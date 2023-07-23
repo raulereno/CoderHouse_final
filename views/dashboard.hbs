@@ -1,4 +1,4 @@
-<div class="container_dashboard">
+<div id="container_dashboard">
     <h1>Dashboard</h1>
     <button onclick="cleanUsers()">Limpiar usuarios inactivos</button>
     <table>
@@ -9,6 +9,7 @@
                 <th>Email</th>
                 <th>Rol</th>
                 <th>Cantidad de productos</th>
+                <th>Ultima conexion:</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -19,7 +20,9 @@
                 <td>{{this.name}}</td>
                 <td>{{this.email}}</td>
                 <td>{{this.rol}}</td>
-                <td>a</td>
+                <td>aaaaa</td>
+                <td>{{this.last_connection}}</td>
+
                 <td>
                     {{!-- TODO: Hacer fn --}}
                     <button class="icon_trash" onclick="deleteUser('{{this._id}}')">

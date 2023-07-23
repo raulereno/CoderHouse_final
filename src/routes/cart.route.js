@@ -14,14 +14,13 @@ const { isOwner, isCartOwner } = require("../middlewares/isOwner");
 
 const route = Router();
 
-//Rutas documentadas ✅
 //Ruta eliminada debido a que la creación del carrito se hace al registrarse un usuario.
 // route.post("/", createCart);//✅
-route.post("/:cid/product/:pid", isLogged, isOwner, isCartOwner, addProductToCart);//✅
-route.put("/:cid/product/:pid", isLogged, updateQuantityProduct);//✅
-route.delete("/:cid/product/:pid", isLogged, isCartOwner, deleteProductInCart);//✅
-route.put("/:cid", isLogged, isCartOwner, addManyProductsToCart);//✅
-route.delete("/:cid", isLogged, isCartOwner, deleteCart);//✅
-route.get("/:cid/purchase", isLogged, isCartOwner, purchaseProducts);//✅
+route.post("/:cid/product/:pid", isLogged, isOwner, isCartOwner, addProductToCart);
+route.put("/:cid/product/:pid", isLogged, updateQuantityProduct);
+route.delete("/:cid/product/:pid", isLogged, isCartOwner, deleteProductInCart);
+route.put("/:cid", isLogged, isCartOwner, addManyProductsToCart);
+route.delete("/:cid", isLogged, isCartOwner, deleteCart);
+route.get("/:cid/purchase", isLogged, isCartOwner, purchaseProducts);
 
 module.exports = route;

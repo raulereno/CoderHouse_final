@@ -1,7 +1,10 @@
 const products = require("../../products");
 const ProductRepository = require("../dao/repositories/product.repository");
+const UserRepository = require("../dao/repositories/user.repository");
+const { sendInfoDeleteProduct } = require("../utils/nodemailer");
 
 const productRepository = new ProductRepository();
+const userRepository = new UserRepository()
 
 const getProductsService = async (filters, user) => {
   try {
@@ -57,9 +60,13 @@ const createOneProductService = async (product, owner) => {
     throw Error(error);
   }
 };
-const deleteProductService = async ({ pid }, user) => {
+const deleteProductService = async ({ pid }, email) => {
   try {
+    const user = await userRepository.findUserByEmail(email)
     const result = await productRepository.deleteProduct(pid, user);
+    if (user.email === process.env.ADMIN_EMAIL) {
+      sendInfoDeleteProduct(result)
+    }
     return result;
   } catch (error) {
     throw Error(error);

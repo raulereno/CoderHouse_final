@@ -61,7 +61,6 @@ const createManyProducts = async (req, res, next) => {
 };
 
 const deleteProduct = async (req, res, next) => {
-
   try {
     await deleteProductService(req.params, req.user.email);
     res.status(200).json({ status: "success", payload: "Product deleted" });

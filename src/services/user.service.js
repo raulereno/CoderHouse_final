@@ -1,4 +1,5 @@
 const UserRepository = require("../dao/repositories/user.repository");
+const { sendInfoDeleteAcount } = require("../utils/nodemailer");
 
 const { createCartService } = require("./cart.service");
 const userRepository = new UserRepository();
@@ -69,12 +70,35 @@ const loginLogoutUserService = async (user) => {
 
 const cleanOldUserService = async () => {
   try {
+    let countDeleteUser = 0
     const users = await userRepository.findAllUsers()
-    console.log("🚀 ~ file: user.service.js:78 ~ cleanOldUserService ~ users:", users)
+    console.log("🚀 ~ file: user.service.js:75 ~ cleanOldUserService ~ users:", users)
+    const dateNow = new Date(Date.now())
+    //TODO: Poner bien la fecha antes de entregar
+    // 2 hs
+    const limit = 120 * 60 * 1000
+    //2 dias
+    //const limit = 48 * 60 * 60 * 1000
 
+    const newTimestamp = dateNow.valueOf() - limit
+    console.log("🚀 ~ file: user.service.js:84 ~ cleanOldUserService ~ newTimestamp:", newTimestamp)
+    const filterDate = new Date(newTimestamp)
+    console.log("🚀 ~ file: user.service.js:86 ~ cleanOldUserService ~ filterDate:", filterDate)
+
+
+    for (const element of users) {
+      //Si el usuario se registro pero nunca ingreso y si la fecha de la ultima conexión fue hace mas de dos dias se lo elimina
+      const aux = new Date(element.last_connection)
+      if (!element.last_connection || aux < filterDate) {
+        await userRepository.deleteUser(element)
+        countDeleteUser++
+        await sendInfoDeleteAcount(element.email)
+      }
+    }
+
+    return countDeleteUser
   } catch (error) {
     throw Error(error)
-
   }
 }
 

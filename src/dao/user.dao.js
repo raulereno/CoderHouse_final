@@ -23,6 +23,16 @@ class UserDAO {
     }
   }
 
+  async deleteUser(user) {
+    try {
+      const result = await this.userCollection.deleteOne({ email: user.email }).lean()
+      return result
+    } catch (error) {
+      throw Error(error)
+
+    }
+  }
+
   async getUserByUsername(username) {
     try {
       const user = await this.userCollection
@@ -66,7 +76,7 @@ class UserDAO {
 
   async findUserByEmail(email) {
     try {
-      const user = await this.userCollection.findOne({ email: email }).lean();
+      const user = await this.userCollection.findOne({ email: email }, { password: 0 }).lean();
       return user;
     } catch (error) {
       throw Error(error);
@@ -75,7 +85,7 @@ class UserDAO {
 
   async findUserById(uid) {
     try {
-      const user = await this.userCollection.findOne({ _id: uid });
+      const user = await this.userCollection.findOne({ _id: uid }, { password: 0 });
       return user;
     } catch (error) {
       throw Error(error);

@@ -121,10 +121,10 @@ class ProductDAO {
 
   async deleteProduct(pid, user) {
     try {
-      let result = await this.productsCollection.findById({ _id: pid });
-      if (result.owner !== user && user !== process.env.ADMIN_EMAIL) throw Error('No tienes autorización para modificar este producto')
-      await this.productsCollection.deleteOne({ _id: pid });
-      return result;
+      let product = await this.productsCollection.findById({ _id: pid });
+      if (product.owner !== user.email && user.email !== process.env.ADMIN_EMAIL) throw Error('No tienes autorización para modificar este producto')
+      const res = await this.productsCollection.deleteOne({ _id: pid });
+      if (res.deletedCount) return product
     } catch (error) {
       throw Error(error);
     }

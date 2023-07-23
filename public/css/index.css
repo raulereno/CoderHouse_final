@@ -363,3 +363,12 @@
 #messages > li:nth-child(odd) {
   background: #efefef;
 }
+
+/* Dashboard */
+#container_dashboard tbody tr {
+   
+    border: 1px solid black;
+}
+#container_dashboard .icon_trash{
+  margin: 0;
+}
