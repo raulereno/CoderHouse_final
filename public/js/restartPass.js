@@ -8,8 +8,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const generateLinkToRestart = () => {
     const email = document.getElementById("input_restart_username")
+    console.log("🚀 ~ file: restartPass.js:11 ~ generateLinkToRestart ~ email:", email.value)
 
-    fetch(`${window.location.protocol}//${window.location.host}/recover/generatelink`, {
+
+    fetch(`${window.location.origin}/api/users/recover/generatelink`, {
         method: "POST",
         mode: "cors",
         cache: "no-cache",
@@ -21,6 +23,7 @@ const generateLinkToRestart = () => {
     })
         .then(res => res.json())
         .then(res => {
+            console.log("🚀 ~ file: restartPass.js:26 ~ generateLinkToRestart ~ res:", res)
             if (res.code == 404 && res.status === "Not found") {
                 setError(res.message, email)
             } else {
