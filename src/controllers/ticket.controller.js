@@ -47,7 +47,7 @@ const purchaseProducts = async (req, res) => {
         purchaser: req.user.username,
         products: productsTicket,
       });
-
+      //TODO: PONER VARIABLE
       resultMailing = sendTicketMail(
         ticket,
         req.user,

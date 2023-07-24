@@ -198,7 +198,7 @@ const generateAccountDeletionEmail = (email) => {
         <p>Hola,</p>
         <p>Hemos eliminado tu cuenta debido a la inactividad prolongada.</p>
         <p>Si deseas seguir utilizando nuestros servicios, por favor, regístrate nuevamente.</p>
-        <a href=${`http://${process.env.API_URL_PROD || "localhost"}:${process.env.PORT || 8080}/register`} class="button">Registrarse</a>
+        <a href=${`${process.env.API_URL_PROD || "http://localhost"}:${process.env.PORT || 8080}/register`} class="button">Registrarse</a>
         <footer>
           <p>Este correo electrónico es generado automáticamente. Por favor, no respondas a este mensaje.</p>
         </footer>

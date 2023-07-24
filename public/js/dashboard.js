@@ -1,7 +1,7 @@
 const cleanUsers = () => {
 
 
-    fetch(`http://${window.location.host}/api/users/cleanOldUsers`)
+    fetch(`${window.location.origin}/api/users/cleanOldUsers`)
         .then((result) => result.json())
         .then((res) => {
             if (res.status === "success") {

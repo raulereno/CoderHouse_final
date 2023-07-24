@@ -26,7 +26,7 @@ const changePassword = async () => {
 }
 
 const sendNewPassword = async (newPassword, token) => {
-    await fetch(`http://${window.location.host}/api/changePassword`, {
+    await fetch(`${window.location.origin}/api/changePassword`, {
         method: "POST",
         mode: "cors",
         cache: "no-cache",

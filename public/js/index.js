@@ -89,7 +89,7 @@ const send_update = async (evt) => {
     "#form_updateProduct input[name='image']"
   ).value;
 
-  await fetch(`http://${window.location.host}/api/products/${idProduct}`, {
+  await fetch(`${window.location.origin}/api/products/${idProduct}`, {
     method: "PUT",
     mode: "cors",
     cache: "no-cache",
@@ -132,7 +132,7 @@ const createProduct = async () => {
   // const fileUpload = document.querySelector("#fileUpload");
   // const file = fileUpload.files[0];
 
-  await fetch(`http://${window.location.host}/api/products`, {
+  await fetch(`${window.location.origin}/api/products`, {
     method: "POST",
     mode: "cors",
     headers: {
@@ -175,7 +175,7 @@ const deleteProduct = async (id) => {
   }).then(async (result) => {
     /* Read more about isConfirmed, isDenied below */
     if (result.isDenied) {
-      await fetch(`http://${window.location.host}/api/products/${id}`, {
+      await fetch(`${window.location.origin}/api/products/${id}`, {
         method: "DELETE",
         mode: "cors",
         cache: "no-cache",
@@ -244,7 +244,7 @@ const showButtonsToOwner = () => {
 
 const changeRol = () => {
   const link = document.getElementById("changeRolLink")
-  fetch(`http://${window.location.host}/${link?.dataset.path}`).then(res => res.json()).then(res => {
+  fetch(`${window.location.origin}/${link?.dataset.path}`).then(res => res.json()).then(res => {
 
     if (res.code === 406 && res.message?.includes('Falta los siguientes documentos para ser premium')) {
       Swal.fire({

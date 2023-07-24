@@ -21,7 +21,7 @@ const submitRegisterForm = () => {
         document.querySelector(".password_error").innerHTML =
           "Las contraseñas no coinciden";
       } else {
-        await fetch(`http://${window.location.host}/api/users/register`, {
+        await fetch(`${window.location.origin}/api/users/register`, {
           method: "POST",
           mode: "cors",
           cache: "no-cache",

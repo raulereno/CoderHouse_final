@@ -12,8 +12,9 @@ const submitLoginForm = () => {
     ?.addEventListener("submit", async (evt) => {
       evt.preventDefault();
       const formData = getFieldsInForm(evt.target);
+      console.log(window.location);
 
-      await fetch(`http://${window.location.host}/api/users/login`, {
+      await fetch(`${window.location.origin}/api/users/login`, {
         method: "POST",
         mode: "cors",
         cache: "no-cache",

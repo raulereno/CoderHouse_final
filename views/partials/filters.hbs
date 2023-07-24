@@ -1,22 +1,18 @@
 <aside id="filters">
     <h2>Categorias</h2>
     <ul class="categories">
-        <li><a
-                href="http://localhost:3001/products?query={{user.email}}&limit={{products.limit}}&sort={{products.sort}}">Mis productos</a>
+        <li><a href="/products?query={{user.email}}&limit={{products.limit}}&sort={{products.sort}}">Mis
+                productos</a>
         </li>
-        <li><a
-                href="http://localhost:3001/products?query=balanceado&limit={{products.limit}}&sort={{products.sort}}">Balanceado</a>
+        <li><a href="/products?query=balanceado&limit={{products.limit}}&sort={{products.sort}}">Balanceado</a>
         </li>
-        <li><a
-                href="http://localhost:3001/products?query=accesorios&limit={{products.limit}}&sort={{products.sort}}">Accesorios</a>
+        <li><a href="/products?query=accesorios&limit={{products.limit}}&sort={{products.sort}}">Accesorios</a>
         </li>
-        <li><a
-                href="http://localhost:3001/products?query=farmacia&limit={{products.limit}}&sort={{products.sort}}">Farmacia</a>
+        <li><a href="/products?query=farmacia&limit={{products.limit}}&sort={{products.sort}}">Farmacia</a>
         </li>
-        <li><a
-                href="http://localhost:3001/products?query=general&limit={{products.limit}}&sort={{products.sort}}">General</a>
+        <li><a href="/products?query=general&limit={{products.limit}}&sort={{products.sort}}">General</a>
         </li>
-        
+
     </ul>
 
     <h2>Filtros</h2>
@@ -31,14 +27,14 @@
     </div>
 
     <div class="container_price_filter">
-        <a href="http://localhost:3001/products?query={{products.query}}&limit={{products.limit}}&sort=asc">Menor
+        <a href="/products?query={{products.query}}&limit={{products.limit}}&sort=asc">Menor
             precio</a>
-        <a href="http://localhost:3001/products?query={{products.query}}&limit={{products.limit}}&sort=desc">Mayor
+        <a href="/products?query={{products.query}}&limit={{products.limit}}&sort=desc">Mayor
             precio</a>
     </div>
 
 
-    <a href="/products" class="clear_filters">Clear filter</a>
+    <a href="/products" class="clear_filters">Limpiar filtros</a>
 
 </aside>
 <script src="/js/filters.js"></script>

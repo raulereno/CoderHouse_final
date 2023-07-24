@@ -24,7 +24,7 @@ const sendFiles = async () => {
         }
     })
 
-    await fetch(`http://${window.location.host}/api/users/${uid}/documents`, {
+    await fetch(`${window.location.origin}/api/users/${uid}/documents`, {
         method: 'post',
         body: form
     }).then(res => res.json()).then(res => {
