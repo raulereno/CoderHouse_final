@@ -5,6 +5,6 @@ const ticketSchema = mongoose.Schema({
   purchase_datetime: { type: Date, default: new Date() },
   amount: { type: Number },
   purchaser: { type: String, required: true },
-  products: [{ type: mongoose.Types.ObjectId, ref: "Product" }],
+  products: [{ product: { type: mongoose.Types.ObjectId, ref: "Product" }, quantity: Number }],
 });
 module.exports = mongoose.model("Ticket", ticketSchema);

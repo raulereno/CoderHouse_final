@@ -7,17 +7,22 @@ const {
   updateQuantityProductService,
 } = require("../services/cart.service");
 
-const getCart = async (req, res) => {
-  const cart = await getCartService(req.params);
+const getCart = async (req, res, next) => {
+  try {
+    const { cid } = req.params
+    const cart = await getCartService(cid);
 
-  res.cookie("cartId", cart._id);
+    res.cookie("cartId", cart._id);
 
-  res.render("cart", {
-    title: "Desafio - Carrito",
-    productsInCart: cart.products,
-    style: "index.css",
-    user: {},
-  });
+    res.render("cart", {
+      title: "Desafio - Carrito",
+      productsInCart: cart.products,
+      style: "index.css",
+      user: {},
+    });
+  } catch (error) {
+    next(error)
+  }
 };
 
 //Controller eliminado debido a que la creación del carrito se hace al registrarse un usuario.
@@ -35,7 +40,7 @@ const getCart = async (req, res) => {
 
 const addProductToCart = async (req, res) => {
   try {
-    const result = await addProductToCartService(req.params, req.user.username);
+    const result = await addProductToCartService(req.params);
 
     res.status(200).send({ status: "success", payload: result });
   } catch (error) {

@@ -33,8 +33,10 @@
                         {{#if this.owner}}
                         <p>Dueño: <strong>{{this.owner}}</strong> </p>
                         {{/if}}
-                        <button onclick="addToCart('{{this._id}}')" class="btn btn-primary">Add to
-                            cart</button>
+                        <button id="buttonAddToCart_{{this._id}}" onclick="addToCart('{{this._id}}')"
+                            class="btn btn-primary">Agregar
+                            al carrito</button>
+
                     </div>
                 </div>
                 {{/each}}

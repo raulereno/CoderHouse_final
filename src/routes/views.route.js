@@ -4,7 +4,7 @@ const { getAllProducts } = require("../controllers/products.controller");
 const isLogged = require("../middlewares/isLogged");
 const { getCart } = require("../controllers/cart.controller");
 const { getAllMessages } = require("../controllers/chat.controller");
-const { paymentMethods } = require("../controllers/payment.controller");
+const { paymentMethods, renderSuccessPayment } = require("../controllers/payment.controller");
 const isAuth = require("../middlewares/isAuth");
 
 const viewsRoute = Router();
@@ -24,6 +24,7 @@ viewsRoute.get("/cart/:cid", isLogged, getCart);
 //Renders relacionados con el chat
 viewsRoute.get("/chat", isLogged, getAllMessages);
 //Renders relacionados con el pago
-viewsRoute.get("/payment", isLogged, paymentMethods);
+viewsRoute.get('/success', isLogged, renderSuccessPayment)
+
 
 module.exports = viewsRoute

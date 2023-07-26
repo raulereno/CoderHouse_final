@@ -63,17 +63,11 @@ const generateTicketMail = (ticket, user, linkToPay) => {
   <body>
     <div class="container">
       <h1>¡Gracias por tu compra!</h1>
-      <p>Hola ${user.username},</p>
+      <p>Hola ${user},</p>
       <p>Has realizado una compra por el valor de $${ticket.amount} en nuestra tienda en línea.</p>
       <p>A continuación, te proporcionamos el código de tu ticket de compra:</p>
       <p><strong>${ticket.code}</strong></p>
-      <p>Por favor, utiliza este código para completar el proceso de pago a través de los métodos de pago disponibles:</p>
-      <ul>
-        <li>Tarjeta de Crédito</li>
-        <li>Tarjeta de Débito</li>
-        <li>Transferencia bancaria</li>
-      </ul>
-      <a href="${linkToPay}" class="button">Ir a método de pago</a>
+      <h3>Muchas gracias por su compra</h3>
       <footer>
         <p>Este correo electrónico es generado automáticamente. Por favor, no respondas a este mensaje.</p>
       </footer>
@@ -286,12 +280,12 @@ const sendResetPassEmail = async (resetLink, user) => {
   return result;
 };
 
-const sendTicketMail = async (ticket, user, linkToPay) => {
+const sendTicketMail = async (ticket, user) => {
   let result = await transport.sendMail({
     from: "Ecommerce <raulereno@gmail.com> ",
-    to: user.username,
+    to: user,
     subject: "Ticket de Compra Ecommerce",
-    html: generateTicketMail(ticket, user, linkToPay),
+    html: generateTicketMail(ticket, user),
     attachments: [],
   });
 

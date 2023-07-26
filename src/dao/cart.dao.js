@@ -15,7 +15,6 @@ class CartDAO {
       .findOne({ _id: cid })
       .populate({
         path: "products.product",
-
       })
       .lean();
 
@@ -24,18 +23,14 @@ class CartDAO {
   }
 
   async addProductToCart(cid, pid) {
-    const cart = await this.cartCollection.findOne({ _id: cid });
+    const cart = await this.cartCollection.findOne({ _id: cid }).populate("products.product");
 
-    const productId = new mongoose.Types.ObjectId(pid);
-
-    const findProduct = cart.products.find((product) =>
-      product.product.equals(productId)
-    );
+    const findProduct = cart.products.find(item => item.product._id.toString() === pid);
 
     if (findProduct) {
       findProduct.quantity++;
     } else {
-      cart.products.push({ product: pid });
+      await cart.products.push({ product: pid });
     }
     await cart.save();
 

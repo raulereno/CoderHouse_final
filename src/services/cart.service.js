@@ -1,13 +1,15 @@
 const CartRepository = require("../dao/repositories/cart.repository");
+const ProductRepository = require("../dao/repositories/product.repository");
 
 const cartRepository = new CartRepository();
-
+const productRepository = new ProductRepository()
 const getCartService = async (cartId) => {
   try {
+
     let result = await cartRepository.getCartById(cartId);
 
     //Elimino todos los productos que se han borrado
-    result.products = result?.products.filter(e => {
+    result.products = result?.products?.filter(e => {
       if (e.product !== null) {
         return e
       }
@@ -30,6 +32,17 @@ const createCartService = async () => {
 
 const addProductToCartService = async ({ cid, pid }) => {
   try {
+    const cart = await cartRepository.getCartById(cid)
+    const product = await productRepository.getOneProduct(pid)
+
+    if (!product.stock) throw Error("Stock insuficiente")
+
+    cart?.products.forEach(element => {
+      if (element.product.stock <= element.quantity) {
+        throw Error("Stock insuficiente")
+      }
+    });
+
     const result = await cartRepository.addProductToCart(cid, pid);
     return result;
   } catch (error) {

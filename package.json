@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev":"nodemon index.js",
+    "dev": "nodemon index.js",
     "test": "mocha test/*.test.js"
   },
   "repository": {
@@ -40,6 +40,7 @@
     "passport-jwt": "^4.0.1",
     "path": "^0.12.7",
     "socket.io": "^4.6.1",
+    "stripe": "^12.14.0",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^4.6.3",
     "uuid": "^9.0.0",

@@ -11,6 +11,12 @@ const addEndPoint = () => {
 };
 
 const addToCart = async (pid) => {
+
+  const buttonAdd = document.getElementById(`buttonAddToCart_${pid}`)
+  buttonAdd.style.backgroundColor = 'GREEN'
+  buttonAdd.innerText = '🛒👌'
+  buttonAdd.disabled = true
+
   const cid = cartId;
 
   await fetch(`${window.location.protocol}//${window.location.host}/api/cart/${cid}/product/${pid}`, {
@@ -19,6 +25,20 @@ const addToCart = async (pid) => {
       "Content-Type": "application/json",
     },
   }).then(res => res.json()).then(res => {
+    if (res.status === "error" && res.payload?.includes('Stock insuficiente')) {
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: res.payload?.split(":")[1],
+        showConfirmButton: false,
+      });
+      setTimeout(() => {
+        buttonAdd.style.backgroundColor = 'RED'
+        buttonAdd.innerText = 'Stock insuficiente'
+        buttonAdd.disabled = true
+      }, 1500);
+      return
+    }
     if (res.code === 401 && res.message?.includes(
       "No puede comprar tu propio producto")) {
       Swal.fire({
@@ -27,7 +47,15 @@ const addToCart = async (pid) => {
         title: res.message,
         showConfirmButton: false,
       });
+      return
+    } else {
+      setTimeout(() => {
+        buttonAdd.style.backgroundColor = 'BLUE'
+        buttonAdd.innerText = 'Agregar al carrito'
+        buttonAdd.disabled = false
+      }, 1500);
     }
+    //
   });
 };
 

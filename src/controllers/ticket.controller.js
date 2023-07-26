@@ -1,12 +1,4 @@
-const {
-  getCartService,
-  deleteProductInCartService,
-} = require("../services/cart.service");
-const {
-  getOneProductService,
-  updateProductService,
-} = require("../services/products.service");
-const { createTicketService } = require("../services/ticket.service");
+const { createTicketService, calculateProductsStockService } = require("../services/ticket.service");
 const { v4: uuidv4 } = require("uuid");
 const { sendTicketMail } = require("../utils/nodemailer");
 
@@ -14,30 +6,9 @@ const purchaseProducts = async (req, res) => {
   try {
     let ticket;
     let resultMailing;
-    const cart = await getCartService(req.params);
+    const { cid } = req.params
 
-    let sum = 0;
-    const productsTicket = [];
-
-    for (let index = 0; index < cart.products.length; index++) {
-      if (cart.products[index].quantity <= cart.products[index].product.stock) {
-        sum += cart.products[index].product.price;
-        const product = await getOneProductService(
-          cart.products[index].product._id
-        );
-
-        product.stock = product.stock - cart.products[index].quantity;
-
-        await product.save();
-
-        productsTicket.push(product);
-
-        await deleteProductInCartService(
-          req.params.cid,
-          cart.products[index].product._id
-        );
-      }
-    }
+    const { sum, productsTicket } = await calculateProductsStockService(cid);
 
     if (productsTicket.length) {
       ticket = await createTicketService({
@@ -47,10 +18,10 @@ const purchaseProducts = async (req, res) => {
         purchaser: req.user.username,
         products: productsTicket,
       });
-      //TODO: PONER VARIABLE
       resultMailing = sendTicketMail(
         ticket,
         req.user,
+        //TODO: variable de entorno
         "http://localhost:3001/payment"
       );
     }

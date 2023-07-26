@@ -13,6 +13,9 @@ const submitRegisterForm = () => {
       evt.preventDefault();
 
       const formData = getFieldsInForm(evt.target);
+      console.log("🚀 ~ file: register.js:16 ~ ?.addEventListener ~ formData:", formData)
+      const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
 
       if (formData.password !== formData.confirm_password) {
         password_input.forEach((input) => {
@@ -20,7 +23,14 @@ const submitRegisterForm = () => {
         });
         document.querySelector(".password_error").innerHTML =
           "Las contraseñas no coinciden";
-      } else {
+      }
+      else if (!regexEmail.test(formData.email)) {
+        const input = document.getElementById("input_email_register")
+        const span = document.querySelector(".error_email_register")
+        input.className = "error"
+        span.innerHTML = "Ingrese un mail valido"
+      }
+      else {
         await fetch(`${window.location.origin}/api/users/register`, {
           method: "POST",
           mode: "cors",
@@ -35,6 +45,7 @@ const submitRegisterForm = () => {
             return res.json();
           })
           .then((res) => {
+            console.log("🚀 ~ file: register.js:48 ~ .then ~ res:", res)
             if (res.code === 409) {
               addErrorInput(res);
             }

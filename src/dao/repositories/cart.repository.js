@@ -9,7 +9,7 @@ class CartRepository {
     return addCart;
   }
 
-  async getCartById({ cid }) {
+  async getCartById(cid) {
     const cart = await cartDao.getCartById(cid);
     return cart;
   }

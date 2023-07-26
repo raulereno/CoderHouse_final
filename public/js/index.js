@@ -142,6 +142,7 @@ const createProduct = async () => {
   })
     .then((res) => res.json())
     .then((res) => {
+      console.log("🚀 ~ file: index.js:145 ~ .then ~ res:", res)
       if (res.code === 401 && res.status === "Unauthorized") {
         Swal.fire({
           position: "center",
@@ -159,7 +160,30 @@ const createProduct = async () => {
           showConfirmButton: false,
         });
       } else {
-        window.location.reload();
+        let timerInterval
+        Swal.fire({
+          title: 'Has agregado el producto con exito',
+          html: 'Seras redirigido en <b></b> milliseconds.',
+          timer: 2500,
+          icon: 'success',
+          timerProgressBar: true,
+          didOpen: () => {
+            Swal.showLoading()
+            const b = Swal.getHtmlContainer().querySelector('b')
+            timerInterval = setInterval(() => {
+              b.textContent = Swal.getTimerLeft()
+            }, 100)
+          },
+          willClose: () => {
+            clearInterval(timerInterval)
+          }
+        }).then((result) => {
+          /* Read more about handling dismissals below */
+          if (result.dismiss === Swal.DismissReason.timer) {
+            window.location.reload();
+          }
+        })
+
       }
     });
 };

@@ -19,10 +19,12 @@
                     </a>
                 </li>
                 {{/isNotAdmin}}
-                {{!-- TODO: acordarse de ponerle una condicion a esto --}}
+                {{#isAdmin user.rol}}
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="/dashboard">Dashboard</a>
                 </li>
+                {{/isAdmin}}
+
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="/chat">Chat</a>
                 </li>

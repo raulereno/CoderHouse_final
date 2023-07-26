@@ -74,8 +74,10 @@ const incompleteDocsPremium = (err, req, res) => {
 }
 
 const errorHandler = (err, req, res, next) => {
+
+  console.log(err.message);
   try {
-    if (err.code == 11000) {
+    if (err.message?.includes("duplicate key error")) {
       return (err = handleDuplicateKeyError(err, req, res));
     }
     if (err.message?.includes("Usuario inexistente")) {
@@ -96,5 +98,6 @@ const errorHandler = (err, req, res, next) => {
     res.status(500).send("An unknown error ocurred");
   }
 };
+
 
 module.exports = errorHandler;
