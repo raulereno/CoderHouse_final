@@ -82,12 +82,6 @@ const changePassword = async (req, res, next) => {
   }
 }
 
-// res.render("home", {
-//   title: "Desafio - Productos",
-//   style: "index.css",
-//   user: user,
-//   products: products,
-// });
 
 const restorePassword = async (req, res, next) => {
   const { token } = req.params;

@@ -34,8 +34,8 @@ const createPaymentService = async (cid, user) => {
         const paymentIntent = await stripe.checkout.sessions.create({
             line_items: formatProducts,
             mode: 'payment',
-            success_url: `http://localhost:3001/api/payment/successPayment?ticket=${ticket._id}&cid=${cid}`,
-            cancel_url: 'http://localhost:3001/api/payment/fail'
+            success_url: `${process.env.API_URL_PROD || "http://localhost"}:${process.env.PORT || 8080}/api/payment/successPayment?ticket=${ticket._id}&cid=${cid}`,
+            cancel_url: `${process.env.API_URL_PROD || "http://localhost"}:${process.env.PORT || 8080}/api/payment/fail`
         })
 
         return paymentIntent

@@ -47,6 +47,11 @@ const addToCart = async (pid) => {
         title: res.message,
         showConfirmButton: false,
       });
+      setTimeout(() => {
+        buttonAdd.style.backgroundColor = 'GREY'
+        buttonAdd.innerText = '❌'
+        buttonAdd.disabled = true
+      }, 1500);
       return
     } else {
       setTimeout(() => {
