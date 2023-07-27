@@ -9,7 +9,6 @@ const {
   updateQuantityProduct,
 } = require("../controllers/cart.controller");
 const isLogged = require("../middlewares/isLogged");
-const { purchaseProducts } = require("../controllers/ticket.controller");
 const { isOwner, isCartOwner } = require("../middlewares/isOwner");
 
 const route = Router();
@@ -21,6 +20,5 @@ route.put("/:cid/product/:pid", isLogged, updateQuantityProduct);
 route.delete("/:cid/product/:pid", isLogged, isCartOwner, deleteProductInCart);
 route.put("/:cid", isLogged, isCartOwner, addManyProductsToCart);
 route.delete("/:cid", isLogged, isCartOwner, deleteCart);
-route.get("/:cid/purchase", isLogged, isCartOwner, purchaseProducts);
 
 module.exports = route;

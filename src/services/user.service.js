@@ -140,12 +140,12 @@ const uploadDocsService = async (files, email) => {
     file_keys.forEach(key => {
       const find = user.documents?.find(document => document.name === key)
       if (find) {
-        find.reference = `http://localhost:3001/documents/${files[key][0].filename}`
+        find.reference = `${process.env.API_URL_PROD || "http://localhost"}:${process.env.PORT || 8080}/documents/${files[key][0].filename}`
       }
       else {
         user.documents.push({
           name: files[key][0].fieldname,
-          reference: `http://localhost:3001/documents/${files[key][0].filename}`
+          reference: `${process.env.API_URL_PROD || "http://localhost"}:${process.env.PORT || 8080}/documents/${files[key][0].filename}`
         })
       }
     })
