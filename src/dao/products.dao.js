@@ -40,11 +40,11 @@ class ProductDAO {
 
     const myCustomLabels = {
       prevLink: products.hasPrevPage
-        ? `${process.env.API_URL_PROD || "http://localhost"}:${process.env.PORT || 8080}/products?page=${setPage - 1
+        ? `${process.env.API_URL_PROD || `http://localhost:${process.env.PORT || 8080}`}/products?page=${setPage - 1
         }&limit=${setLimit}${setStringQuery}`
         : null,
       nextLink: products.hasNextPage
-        ? `${process.env.API_URL_PROD || "http://localhost"}:${process.env.PORT || 8080}/products?page=${setPage + 1
+        ? `${process.env.API_URL_PROD || `http://localhost:${process.env.PORT || 8080}`}/products?page=${setPage + 1
         }&limit=${setLimit}${setStringQuery}`
         : null,
     };
