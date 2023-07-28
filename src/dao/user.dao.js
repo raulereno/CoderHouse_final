@@ -112,7 +112,6 @@ class UserDAO {
         user.rol = "usuario";
       }
       const updatedUser = await this.userCollection.findOneAndUpdate({ _id: uid }, user, { new: true }).lean();
-      console.log("🚀 ~ file: user.dao.js:115 ~ UserDAO ~ changeRol ~ updatedUser:", updatedUser)
       return updatedUser;
     } catch (error) {
       throw Error(error);

@@ -73,7 +73,7 @@ const changePassword = async (req, res, next) => {
     if (!user) res.redirect("/login");
 
     const token = generateAuthToken(user.email, "1h")
-    await sendResetPassEmail(`${process.env.API_URL_PROD || "http://localhost"}:${process.env.PORT || 8080}/restorepass/${token}`, user)
+    await sendResetPassEmail(`${process.env.API_URL_PROD ? process.env.API_URL_PROD : "http://localhost"}:${process.env.PORT || 8080}/restorepass/${token}`, user)
 
     res.status(201).send({ status: "success", payload: "Link de restauración de contraseña enviado a casilla de email" })
   } catch (error) {
