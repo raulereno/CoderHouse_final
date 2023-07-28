@@ -1,4 +1,10 @@
 module.exports = function formatDate(date) {
-    return new Date(date)?.toLocaleString()
+    if (date) {
+        return new Date(date)?.toLocaleString()
+    }
+    else {
+        return "No ingreso"
+    }
+
 }
 

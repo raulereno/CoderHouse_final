@@ -312,7 +312,5 @@ const changeRol = () => {
       })
     }
 
-  }).catch(err => {
-    //TODO: MANEJAR ERROR
   })
 }

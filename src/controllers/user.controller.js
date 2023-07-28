@@ -18,7 +18,6 @@ const formLoginUser = (req, res) => {
   res.render("login", { title: "Iniciar Sesión" });
 };
 
-//TODO: FALTA EL UPDATE USER
 
 const loginUser = async (req, res, next) => {
   try {
