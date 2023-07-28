@@ -82,6 +82,14 @@ class UserDAO {
       throw Error(error);
     }
   }
+  async findFullUserByEmail(email) {
+    try {
+      const user = await this.userCollection.findOne({ email: email }).lean();
+      return user;
+    } catch (error) {
+      throw Error(error);
+    }
+  }
 
   async findUserById(uid) {
     try {

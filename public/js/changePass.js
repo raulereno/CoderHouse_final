@@ -12,8 +12,6 @@ const changePassword = async () => {
 
     const token = document.querySelector("#token_restore").value
 
-
-
     if (newPassword.value !== newPassword_repeat.value) {
         setError("Las contraseñas no coinciden")
         newPassword.className += " error"
@@ -26,7 +24,7 @@ const changePassword = async () => {
 }
 
 const sendNewPassword = async (newPassword, token) => {
-    await fetch(`${window.location.origin}/api/changePassword`, {
+    await fetch(`${window.location.protocol}//${window.location.host}/api/users/changePassword`, {
         method: "POST",
         mode: "cors",
         cache: "no-cache",
@@ -36,6 +34,7 @@ const sendNewPassword = async (newPassword, token) => {
         },
         body: JSON.stringify({ newPassword: newPassword, token: token }),
     }).then(res => res.json()).then(data => {
+        console.log("🚀 ~ file: changePass.js:39 ~ sendNewPassword ~ data:", data)
         if (data.code === 304) {
             setError(data.message)
         }

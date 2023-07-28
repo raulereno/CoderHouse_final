@@ -8,7 +8,8 @@ const {
   getUserByUsername,
   getAllUsersService,
   uploadDocsService,
-  cleanOldUserService
+  cleanOldUserService,
+  getFullUserByEmailService
 } = require("../services/user.service");
 const { generateAuthToken, decodeAuthToken } = require("../utils/jwt");
 const { sendResetPassEmail } = require("../utils/nodemailer");
@@ -105,9 +106,10 @@ const sendNewPassword = async (req, res, next) => {
 
   try {
     const { token, newPassword } = req.body
+
     const decoded = decodeAuthToken(token)
 
-    const user = await getUserByEmailService(decoded.username);
+    const user = await getFullUserByEmailService(decoded.username)
 
     if (isValidPassword(user, newPassword)) {
       return res.status(304).send({ status: "error", code: 304, message: "Establece una contraseña distinta a la anterior" })

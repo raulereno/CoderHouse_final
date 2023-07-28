@@ -63,6 +63,14 @@ class UserRepository {
       throw Error(error)
     }
   }
+  async findFullUserByEmail(email) {
+    try {
+      const result = await userDao.findFullUserByEmail(email);
+      return result;
+    } catch (error) {
+      throw Error(error);
+    }
+  }
 
   async findUserById(uid) {
     try {

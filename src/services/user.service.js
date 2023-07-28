@@ -40,6 +40,14 @@ const getUserByEmailService = async (email) => {
     throw Error(error)
   }
 };
+const getFullUserByEmailService = async (email) => {
+  try {
+    const user = await userRepository.findFullUserByEmail(email);
+    return user;
+  } catch (error) {
+    throw Error(error)
+  }
+};
 
 const getUserByUsername = async (username) => {
   try {
@@ -166,5 +174,6 @@ module.exports = {
   updateUserService,
   loginLogoutUserService,
   uploadDocsService,
-  cleanOldUserService
+  cleanOldUserService,
+  getFullUserByEmailService
 };
