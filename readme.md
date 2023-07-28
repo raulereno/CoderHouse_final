@@ -1,10 +1,10 @@
-# Proyecto Final de Programación Backend - Desafíos Backend CH
-¡Bienvenido/a al proyecto final de programación backend para Desafíos Backend CH! En este proyecto, desarrollaremos una aplicación backend utilizando diversas tecnologías y paquetes mencionados en el archivo package.json. El objetivo es construir una plataforma robusta y segura que permita gestionar diversos desafíos y tareas.
+# Proyecto Final de Programación Backend - CoderCommerce
+¡Bienvenido/a al proyecto final de programación backend para CoderHouse! En este proyecto, desarrollaremos una aplicación backend utilizando diversas tecnologías y paquetes mencionados en el archivo package.json. El objetivo es construir una plataforma robusta y segura que permita a los usuarios comprar y vender sus productos y tambien chatear con otras personas.
 
 ## Descripción del Proyecto
-El proyecto "Desafíos Backend CH" es una aplicación de backend basada en Node.js y Express, que proporciona servicios y funcionalidades para administrar desafíos, usuarios y tareas. La aplicación utiliza una base de datos MongoDB para almacenar la información, y también cuenta con autenticación y autorización utilizando tokens JWT. A continuación, describiremos las tecnologías clave utilizadas en este proyecto:
+El proyecto "CoderCommerce" es una aplicación de backend basada en Node.js y Express, que proporciona servicios y funcionalidades para administrar desafíos, usuarios y tareas. La aplicación utiliza una base de datos MongoDB para almacenar la información, y también cuenta con autenticación y autorización utilizando tokens JWT. A continuación, describiremos las tecnologías clave utilizadas en este proyecto:
 
-## Tecnologías Principales
+## Tecnologías Principalesº
 - **Node.js:** Plataforma de desarrollo para construir aplicaciones del lado del servidor utilizando JavaScript.
 - **Express:** Framework de aplicaciones web para Node.js que simplifica la creación de API y manejo de rutas.
 - **MongoDB:** Base de datos NoSQL que almacena los datos de la aplicación de manera eficiente y flexible.
