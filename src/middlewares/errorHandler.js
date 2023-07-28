@@ -1,11 +1,15 @@
 const handleDuplicateKeyError = (err, req, res) => {
-  const field = Object.keys(err.keyValue);
+  // Utilizamos una expresión regular para buscar la clave duplicada
+  const duplicateKeyRegex = /dup key: { (\w+): "([^"]+)" }/;
 
-  req.logger.warning(`Una cuenta con ese ${field} ya existe`)
+  // Utilizamos exec() para obtener la información de la clave duplicada
+  const match = duplicateKeyRegex.exec(err.message);
+
+  req.logger.warning(`Una cuenta con ese ${match[1]} ya existe`)
 
   res.status(409).send({
     status: "error",
-    message: `Una cuenta con ese ${field} ya existe`,
+    message: `Una cuenta con ese ${match[1]} ya existe`,
     code: 409,
   });
 };
@@ -22,11 +26,7 @@ const notFound = (err, req, res) => {
 
   req.logger.warning("Usuario no encontrado")
   res.redirect("/login")
-  // res.status(404).send({
-  //   status: "Not found",
-  //   message: err.message,
-  //   code: 404,
-  // });
+
 };
 
 const invalidCredentials = (err, req, res) => {
@@ -75,7 +75,6 @@ const incompleteDocsPremium = (err, req, res) => {
 
 const errorHandler = (err, req, res, next) => {
 
-  console.log(err.message);
   try {
     if (err.message?.includes("duplicate key error")) {
       return (err = handleDuplicateKeyError(err, req, res));
