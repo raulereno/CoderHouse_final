@@ -4,6 +4,7 @@ const isAuth = require("./isAuth.js")
 const isNotAdmin = require("./isNotAdmin.js")
 const isAdmin = require("./isAdmin.js")
 const checkFiles = require("./checkFiles.js")
+const formatDate = require("./formatDates.js")
 
 module.exports = {
   forPages,
@@ -11,5 +12,6 @@ module.exports = {
   isAuth,
   isNotAdmin,
   checkFiles,
-  isAdmin
+  isAdmin,
+  formatDate
 };

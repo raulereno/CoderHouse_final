@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const generateLinkToRestart = () => {
     const email = document.getElementById("input_restart_username")
-    console.log("🚀 ~ file: restartPass.js:11 ~ generateLinkToRestart ~ email:", email.value)
 
 
     fetch(`${window.location.origin}/api/users/recover/generatelink`, {

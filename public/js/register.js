@@ -13,7 +13,6 @@ const submitRegisterForm = () => {
       evt.preventDefault();
 
       const formData = getFieldsInForm(evt.target);
-      console.log("🚀 ~ file: register.js:16 ~ ?.addEventListener ~ formData:", formData)
       const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 

@@ -72,13 +72,9 @@ const cleanOldUserService = async () => {
   try {
     let countDeleteUser = 0
     const users = await userRepository.findAllUsers()
-    console.log("🚀 ~ file: user.service.js:75 ~ cleanOldUserService ~ users:", users)
     const dateNow = new Date(Date.now())
-    //TODO: Poner bien la fecha antes de entregar
-    // 2 hs
-    const limit = 120 * 60 * 1000
-    //2 dias
-    //const limit = 48 * 60 * 60 * 1000
+    //2 dias en ms
+    const limit = 48 * 60 * 60 * 1000
 
     const newTimestamp = dateNow.valueOf() - limit
     console.log("🚀 ~ file: user.service.js:84 ~ cleanOldUserService ~ newTimestamp:", newTimestamp)
