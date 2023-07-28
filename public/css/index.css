@@ -118,6 +118,7 @@
 }
 
 #navbarNav .navbar-nav .nav-item:hover {
+  
   background-color: rgba(128, 128, 128, 0.315);
   border-radius: 5px;
 }
@@ -701,4 +702,10 @@ tbody tr:hover {
 
 #form_updateProduct input[type="submit"]:hover {
   background-color: #333333;
+}
+
+.navbar{
+  background-color: rgba(0, 129, 215, 0.098);
+  box-shadow: 0 2px 4px rgba(0, 86, 143, 0.2);
+  margin-bottom: 20px;
 }
