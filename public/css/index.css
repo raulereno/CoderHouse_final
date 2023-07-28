@@ -144,14 +144,13 @@
 
 /* Filters */
 #filters {
-  background-color: rgba(128, 128, 128, 0.169);
+  background-color: rgba(0, 129, 215, 0.098);
   width: 20%;
-  padding: 15px;
-  max-height: 550px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   border-radius: 5px;
 }
 
@@ -185,7 +184,7 @@
 
 .container_price_filter a {
   background-color: rgba(128, 128, 128, 0.274);
-  padding: 5px;
+  padding: 8px;
   text-decoration: none;
   color: black;
   border-radius: 5px;
@@ -199,28 +198,42 @@
   border-radius: 5px;
 }
 
-/* Pagination */
+
 .container_pagination {
-  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
 }
 
-.container_pagination .pagination a {
+
+.pagination {
+  list-style: none;
+  padding: 0;
+  display: flex;
+}
+
+.page-item {
+  margin: 0 5px;
+}
+
+.page-link {
+  display: inline-block;
+  padding: 10px;
   text-decoration: none;
-  color: black;
+  background-color: rgba(0, 86, 143, 0.261);
+  /* Gama de colores rgba(128, 128, 128) con opacidad 0.8 */
+  color: #ffffff;
+  border-radius: 5px;
 }
 
-.container_pagination .pagination .disablePrevPage a {
-  display: none;
+.page-link svg {
+  vertical-align: middle;
 }
 
-.container_pagination .pagination .disableNextPage a {
-  display: none;
+.page-link:hover {
+  background-color: rgba(0, 86, 143, 0.431);
+  /* Cambiar a opacidad 1 en hover para resaltar más el color */
 }
-
-.page-item.currentPage a {
-  background-color: grey;
-}
-
 /*  */
 #container_home {
   display: flex;
@@ -251,21 +264,67 @@
   gap: 15px;
 }
 
-#container_products .card img {
+
+.card {
+  width: 18rem;
+  height: 500px; /* Altura fija para todas las cards */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 8px rgba(0, 86, 143, 0.2)
+}
+
+.card-img-top {
   width: 100%;
-  height: 350px;
+  height: 200px; 
   object-fit: contain;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
-#container_products .card .card-body {
-  align-items: center;
-  margin-bottom: 15px;
+.card-body {
+  padding: 10px 32px;
 }
 
-#container_products .card .card-body button {
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.card-text.description {
+  margin-bottom: 10px;
+}
+
+.card-text.price {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card-text.stock {
+  margin-bottom: 10px;
+}
+
+.btn.btn-primary {
   position: absolute;
-  bottom: 2px;
-  right: 2px;
+  bottom: 8px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background-color: rgb(0, 86, 143);
+  width: 70%;
+  color: #ffffff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn.btn-primary:hover {
+  background-color: rgb(0, 129, 215);
 }
 
 .icon_trash,
@@ -471,4 +530,140 @@ tr:nth-child(even) {
 
 tbody tr:hover {
   background-color: #e0e0e0;
+}
+
+#create_form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Estilos para las etiquetas */
+#create_form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Estilos para los campos de entrada */
+#create_form input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Estilos para el botón de envío */
+#create_form input[type="submit"] {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Estilo al pasar el cursor sobre el botón de envío */
+#create_form input[type="submit"]:hover {
+  background-color: #333333;
+}
+
+#filters {
+  width: 18rem;
+  height: 600px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 8px rgba(0, 86, 143, 0.2); /* Agregar sombra con el color especificado */
+}
+
+#filters a{
+  background-color: rgb(0, 86, 143);
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#filters a:hover{
+  background-color: rgb(0, 129, 215);
+  color:white
+
+}
+
+#filters h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 10px;
+}
+
+/* Estilos para la lista de categorías */
+.categories {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Estilos para los enlaces de las categorías */
+.categories li {
+  margin: 5px 0;
+}
+
+.categories li a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.categories li a:hover {
+  color: #0063a5;
+}
+
+/* Estilos para los filtros */
+#filters div {
+  margin: 10px;
+}
+
+/* Estilos para el menú de cantidad de productos */
+#quantity_select {
+  padding: 5px;
+}
+
+/* Estilos para los enlaces de ordenar por precio */
+.container_price_filter a {
+  display: block;
+  text-decoration: none;
+  color: #000000;
+  margin: 5px;
+}
+
+.container_price_filter a:hover {
+  color: #0063a5;
+}
+
+/* Estilos para el enlace de limpiar filtros */
+.clear_filters {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  text-decoration: none;
+  background-color: #f2f2f2;
+  color: #000000;
+  border-top: 1px solid #ccc;
+}
+
+.clear_filters:hover {
+  background-color: #e0e0e0;
+}
+
+.btn.btn-primary.add_product{
+  position: inherit;
+  width: 150px;
+  margin: 0;
 }
