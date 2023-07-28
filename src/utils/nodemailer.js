@@ -305,7 +305,6 @@ const sendInfoDeleteAcount = async (email) => {
 };
 
 const sendInfoDeleteProduct = async (product) => {
-  console.log("🚀 ~ file: nodemailer.js:315 ~ sendInfoDeleteProduct ~ product:", product)
 
   let result = await transport.sendMail({
     from: "Ecommerce <raulereno@gmail.com> ",
