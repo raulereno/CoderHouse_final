@@ -537,18 +537,15 @@ tbody tr:hover {
   margin: 0 auto;
   padding: 20px;
   font-family: Arial, sans-serif;
-  border: 1px solid #ccc;
   border-radius: 5px;
 }
 
-/* Estilos para las etiquetas */
 #create_form label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
 }
 
-/* Estilos para los campos de entrada */
 #create_form input[type="text"] {
   width: 100%;
   padding: 10px;
@@ -557,7 +554,6 @@ tbody tr:hover {
   border-radius: 5px;
 }
 
-/* Estilos para el botón de envío */
 #create_form input[type="submit"] {
   background-color: #000000;
   color: #ffffff;
@@ -567,7 +563,6 @@ tbody tr:hover {
   cursor: pointer;
 }
 
-/* Estilo al pasar el cursor sobre el botón de envío */
 #create_form input[type="submit"]:hover {
   background-color: #333333;
 }
@@ -666,4 +661,44 @@ tbody tr:hover {
   position: inherit;
   width: 150px;
   margin: 0;
+}
+.btn.btn-primary.update_product{
+  position: inherit;
+  width: 150px;
+  margin: 0;
+}
+
+#form_updateProduct {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  border-radius: 5px;
+}
+
+#form_updateProduct label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+#form_updateProduct input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#form_updateProduct input[type="submit"] {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#form_updateProduct input[type="submit"]:hover {
+  background-color: #333333;
 }
