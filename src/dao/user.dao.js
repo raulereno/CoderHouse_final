@@ -105,13 +105,14 @@ class UserDAO {
   async changeRol(uid) {
     try {
       const user = await this.userCollection.findOne({ _id: uid });
-      const rol = user.rol;
-      if (rol === "usuario") {
+
+      if (user.rol === "usuario") {
         user.rol = "premium";
       } else {
         user.rol = "usuario";
       }
-      const updatedUser = await this.userCollection.findOneAndUpdate({ _id: uid }, user).lean();
+      const updatedUser = await this.userCollection.findOneAndUpdate({ _id: uid }, user, { new: true }).lean();
+      console.log("🚀 ~ file: user.dao.js:115 ~ UserDAO ~ changeRol ~ updatedUser:", updatedUser)
       return updatedUser;
     } catch (error) {
       throw Error(error);

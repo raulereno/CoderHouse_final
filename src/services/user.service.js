@@ -122,7 +122,6 @@ const changeRolService = async (uid) => {
       return await userRepository.changeRol(uid);
     }
 
-
   } catch (error) {
     throw Error(error)
   }
