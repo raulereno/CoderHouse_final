@@ -389,7 +389,7 @@
 
 
 
-#container_cart .backHome{
+#container_cart .backHome , #clean_cart,#purchase_products{
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
@@ -401,12 +401,12 @@
   cursor: pointer;
   text-decoration: none;
 }
-#container_cart .backHome:hover {
+#container_cart .backHome:hover, #clean_cart:hover,#purchase_products:hover {
   background-color: #333333; /* Color de fondo más oscuro */
 }
 
 /* Estilo al hacer clic */
-#container_cart .backHome:active {
+#container_cart .backHome:active, #clean_cart:active,#purchase_products:active {
   background-color: #666666; /* Color de fondo aún más oscuro */
 }
 

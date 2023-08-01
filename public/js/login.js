@@ -38,6 +38,13 @@ const submitLoginForm = () => {
           if (res.code === 403 && res.status === "Error") {
             addErrorInput(res);
           }
+        }).catch(err => {
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: err.message,
+            showConfirmButton: false,
+          });
         });
     });
 };

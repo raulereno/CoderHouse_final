@@ -22,9 +22,9 @@ const createPayment = async (req, res, next) => {
 
 const successPay = async (req, res, next) => {
   try {
-    const { ticket, cid } = req.query
+    const { ticket, user } = req.query
 
-    await sendTicketService(ticket, cid, req.user.username)
+    await sendTicketService(ticket, user)
 
     res.redirect('/success')
   } catch (error) {

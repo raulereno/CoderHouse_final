@@ -120,6 +120,13 @@ const send_update = async (evt) => {
       else {
         window.location.reload();
       }
+    }).catch(err => {
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: err.message,
+        showConfirmButton: false,
+      });
     });
 };
 
@@ -185,6 +192,13 @@ const createProduct = async () => {
         })
 
       }
+    }).catch(err => {
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: err.message,
+        showConfirmButton: false,
+      });
     });
 };
 
@@ -231,8 +245,13 @@ const deleteProduct = async (id) => {
             window.location.reload();
           }
         }).catch(err => {
-          console.log(err);
-        });
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: err.message,
+            showConfirmButton: false,
+          });
+        })
     }
   });
 };
@@ -312,5 +331,12 @@ const changeRol = () => {
       })
     }
 
+  }).catch(err => {
+    Swal.fire({
+      position: "center",
+      icon: "error",
+      title: err.message,
+      showConfirmButton: false,
+    });
   })
 }

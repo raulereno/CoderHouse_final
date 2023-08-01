@@ -25,11 +25,11 @@ const createTicketService = async (ticket) => {
 
 
 
-const sendTicketService = async (tid, cid, user) => {
+const sendTicketService = async (tid, user) => {
 
   try {
     const ticket = await getOneTicketService(tid)
-    const cart = await getCartService(cid)
+    const cart = await getCartService(user)
 
     for (let index = 0; index < cart.products?.length; index++) {
       const product = await getOneProductService(
@@ -61,9 +61,9 @@ const sendTicketService = async (tid, cid, user) => {
 
 }
 
-const calculateProductsStockService = async (cid) => {
+const calculateProductsStockService = async (user) => {
 
-  const cart = await getCartService(cid);
+  const cart = await getCartService(user);
   const productsTicket = [];
   let sum = 0;
 
@@ -76,13 +76,6 @@ const calculateProductsStockService = async (cid) => {
 
       productsTicket.push({ product, quantity: cart.products[index].quantity });
 
-      // await product.save();
-
-
-      // await deleteProductInCartService(
-      //   req.params.cid,
-      //   cart.products[index].product._id
-      // );
     } else {
       sum += cart.products[index].product.price * cart.products[index].product.stock;
       const product = await getOneProductService(

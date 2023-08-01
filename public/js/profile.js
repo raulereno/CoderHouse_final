@@ -50,6 +50,13 @@ const sendFiles = async () => {
                 if (result.dismiss === Swal.DismissReason.timer) {
                     window.location.replace("/profile");
                 }
+            }).catch(err => {
+                Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: err.message,
+                    showConfirmButton: false,
+                });
             })
         }
     })

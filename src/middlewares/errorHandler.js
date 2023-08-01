@@ -74,6 +74,7 @@ const incompleteDocsPremium = (err, req, res) => {
 }
 
 const errorHandler = (err, req, res, next) => {
+  console.log("🚀 ~ file: errorHandler.js:100 ~ errorHandler ~ err:", err)
 
   try {
     if (err.message?.includes("duplicate key error")) {

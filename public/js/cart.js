@@ -2,7 +2,6 @@ let cartId = localStorage.getItem("cartId");
 
 document.addEventListener("DOMContentLoaded", () => {
   cleanCart();
-  addEndPoint();
 });
 
 const addToCart = async (pid) => {
@@ -56,6 +55,13 @@ const addToCart = async (pid) => {
       }, 1500);
     }
     //
+  }).catch(err => {
+    Swal.fire({
+      position: "center",
+      icon: "error",
+      title: err.message,
+      showConfirmButton: false,
+    });
   });
 };
 
@@ -89,8 +95,17 @@ const setQuantity = async (pid) => {
     body: JSON.stringify({ quantity: Number(quantity) }),
   })
     .then((response) => response.json())
-    .then((data) => {
-      window.location.reload();
+    .then((res) => {
+      if (res.status && res.status === "success") {
+        window.location.reload();
+      }
+    }).catch(err => {
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: err.message,
+        showConfirmButton: false,
+      });
     });
 };
 
@@ -104,9 +119,18 @@ const deleteProductInCart = async (pid) => {
     },
   })
     .then((response) => response.json())
-    .then(() => {
-      window.location.reload();
-    });
+    .then((res) => {
+      if (res.status && res.status === "success") {
+        window.location.reload();
+      }
+    }).catch(err => {
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: err.message,
+        showConfirmButton: false,
+      });
+    });;
 };
 const cleanCart = () => {
   document.getElementById("clean_cart")?.addEventListener("click", async () => {
@@ -119,8 +143,17 @@ const cleanCart = () => {
       },
     })
       .then((response) => response.json())
-      .then(() => {
-        window.location.reload();
-      });
+      .then((res) => {
+        if (res.status && res.status === "success") {
+          window.location.reload();
+        }
+      }).catch(err => {
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: err.message,
+          showConfirmButton: false,
+        });
+      });;
   });
 };

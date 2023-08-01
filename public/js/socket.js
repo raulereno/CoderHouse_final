@@ -42,6 +42,13 @@ const sendMessages = async () => {
       if (data.status === "error") {
         alert(data.error);
       }
+    }).catch(err => {
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: err.message,
+        showConfirmButton: false,
+      });
     });
 
   message.value = "";

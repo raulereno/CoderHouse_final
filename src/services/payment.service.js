@@ -4,8 +4,8 @@ const { calculateProductsStockService, createTicketService } = require("./ticket
 
 const createPaymentService = async (cid, user) => {
     try {
-        const { productsTicket, sum } = await calculateProductsStockService(cid)
-        console.log("🚀 ~ file: payment.service.js:8 ~ createPaymentService ~ productsTicket:", productsTicket)
+        const { productsTicket, sum } = await calculateProductsStockService(user)
+
         const ticket = await createTicketService({
             code: uuidv4(),
             purchase_datetime: new Date(),
@@ -13,6 +13,7 @@ const createPaymentService = async (cid, user) => {
             purchaser: user,
             products: productsTicket,
         })
+
         const formatProducts = productsTicket.map(product => {
 
             return {
@@ -34,7 +35,7 @@ const createPaymentService = async (cid, user) => {
         const paymentIntent = await stripe.checkout.sessions.create({
             line_items: formatProducts,
             mode: 'payment',
-            success_url: `${process.env.API_URL_PROD || `http://localhost:${process.env.PORT || 8080}`}/api/payment/successPayment?ticket=${ticket._id}&cid=${cid}`,
+            success_url: `${process.env.API_URL_PROD || `http://localhost:${process.env.PORT || 8080}`}/api/payment/successPayment?ticket=${ticket._id}&user=${user}`,
             cancel_url: `${process.env.API_URL_PROD || `http://localhost:${process.env.PORT || 8080}`}/api/payment/fail`
         })
 

@@ -29,7 +29,12 @@ const generateLinkToRestart = () => {
                 successLink(res.payload, email)
             }
         }).catch(err => {
-            console.log(err.message);
+            Swal.fire({
+                position: "center",
+                icon: "error",
+                title: err.message,
+                showConfirmButton: false,
+            });
         })
 }
 

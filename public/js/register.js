@@ -59,6 +59,13 @@ const submitRegisterForm = () => {
                 window.location.replace("/login");
               });
             }
+          }).catch(err => {
+            Swal.fire({
+              position: "center",
+              icon: "error",
+              title: err.message,
+              showConfirmButton: false,
+            });
           });
       }
     });

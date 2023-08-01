@@ -66,7 +66,12 @@ const sendNewPassword = async (newPassword, token) => {
             })
         }
     }).catch(err => {
-        console.log("err", err);
+        Swal.fire({
+            position: "center",
+            icon: "error",
+            title: err.message,
+            showConfirmButton: false,
+        });
     })
 
 

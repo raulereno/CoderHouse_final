@@ -9,10 +9,10 @@ const purchaseProducts = () => {
 
   Swal.fire({
     title:
-      "Los productos que no tenemos en stock quedaran almacenados en tu carrito para más adelante, te gustaría continuar para finalizar el pago?",
+      "Te gustaría continuar para finalizar el pago?",
     showCancelButton: true,
     showConfirmButton: true,
-    confirmButtonCancel: "Cancelar",
+    cancelButtonText: "Cancelar",
     confirmButtonText: "Continuar",
     reverseButtons: true,
   }).then(async (result) => {
@@ -34,31 +34,6 @@ const purchaseProducts = () => {
         .then((res) => {
           if (res.status === "success" && res.payload?.url) {
             window.location = res.payload?.url
-            // Swal.fire({
-            //   title:
-            //     "Pronto recibiras un mail a " +
-            //     res.payload.purchaser +
-            //     " para continuar con el paso final",
-            //   html: `<p>Total: $${res.payload.amount}</p> <p>Codigo: <strong>${res.payload.code}</strong></p> <h3>Seras redirigido al Inicio en <b></b> milliseconds.</h3>`,
-            //   icon: "success",
-            //   timer: 10000,
-            //   timerProgressBar: true,
-            //   didOpen: () => {
-            //     Swal.showLoading();
-            //     const b = Swal.getHtmlContainer().querySelector("b");
-            //     timerInterval = setInterval(() => {
-            //       b.textContent = Swal.getTimerLeft();
-            //     }, 100);
-            //   },
-            //   willClose: () => {
-            //     clearInterval(timerInterval);
-            //   },
-            // }).then((result) => {
-            //   /* Read more about handling dismissals below */
-            //   if (result.dismiss === Swal.DismissReason.timer) {
-            //     window.location.replace("/products");
-            //   }
-            // });
           }
         });
     }
