@@ -20,7 +20,7 @@ viewsRoute.get("/dashboard", isLogged, isAuth, dashboardView);
 //Renders relacionados con los productos
 viewsRoute.get("/products", isLogged, getAllProducts);
 //Renders relacionados con el carrito
-viewsRoute.get("/cart/:cid", isLogged, getCart);
+viewsRoute.get("/cart", isLogged, getCart);
 //Renders relacionados con el chat
 viewsRoute.get("/chat", isLogged, getAllMessages);
 //Renders relacionados con el pago

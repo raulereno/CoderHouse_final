@@ -5,11 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
   addEndPoint();
 });
 
-const addEndPoint = () => {
-  const link = document.getElementById("link_cart");
-  if (link) link.href += cartId;
-};
-
 const addToCart = async (pid) => {
 
   const buttonAdd = document.getElementById(`buttonAddToCart_${pid}`)

@@ -5,21 +5,20 @@
         <thead>
             <tr>
                 <th>Username</th>
-                <th>Nombre</th>
                 <th>Email</th>
                 <th>Rol</th>
-                <th>Ultima conexion:</th>
+                <th>Ultima conexion</th>
             </tr>
         </thead>
         <tbody>
             {{#each users}}
             <tr>
                 <td>{{this.username}}</td>
-                <td>{{this.name}}</td>
                 <td>{{this.email}}</td>
                 <td>{{this.rol}}</td>
 
                 <td>{{#formatDate this.last_connection}}{{/formatDate}}</td>
+
             </tr>
             {{/each}}
         </tbody>

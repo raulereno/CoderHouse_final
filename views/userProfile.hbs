@@ -1,5 +1,6 @@
 <div id="container_profile">
     <h2>Profile</h2>
+    {{#isNotAdmin user.rol}}
     <form action="" id="form_files">
         <div>
 
@@ -22,7 +23,7 @@
 
             <input hidden type="file" id="file_identification" accept=".doc,.docx,.pdf,.txt,.png,.jpeg">
         </div>
-        
+
         <div>
             {{#if user.documents.length}}
 
@@ -40,7 +41,7 @@
             <label for="file_address"> Agregar archivo</label>
             <span id="file-chosen_address">Ningún archivo seleccionado</span>
             {{/if}}
-          
+
 
             {{!-- <label for="file_address">Agregar archivo</label>
             <span id="file-chosen_address">Ningún archivo seleccionado</span> --}}
@@ -51,7 +52,7 @@
 
 
             {{#if user.documents.length}}
-           
+
             {{#checkFiles user.documents "statusCount"}}
             <h3>Comprobante de estado de cuenta: <span>✅</span></h3>
             <label for="file_status_count"> Editar archivo</label>
@@ -76,5 +77,18 @@
         <input type="text" hidden value={{user._id}} id="user_id">
         <button type="submit">Enviar</button>
     </form>
+    {{else}}
+    <h3>Tu perfil es de tipo administrador</h3>
+    <h4>Acciones:</h4>
+    <ul>
+        <li>
+            <p>Borrar cualquier producto que infriga las normas.</p>
+        </li>
+        <li>
+            <p>Borrar usuarios inactivos mayor a 2 días o aquellos que no iniciaron sesión a través del <a
+                    href="/dashboard">dashboard</a> de administrador.</p>
+        </li>
+    </ul>
+    {{/isNotAdmin}}
 </div>
 <script src="/js/profile.js"></script>

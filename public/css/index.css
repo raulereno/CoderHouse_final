@@ -61,6 +61,13 @@
   padding: 5px;
 }
 
+#container_profile{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
 #form_files {
   display: flex;
   flex-direction: column;
@@ -372,7 +379,33 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 15px;
+  height: 70vh;
 }
+
+
+
+#container_cart .backHome{
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #000000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+#container_cart .backHome:hover {
+  background-color: #333333; /* Color de fondo más oscuro */
+}
+
+/* Estilo al hacer clic */
+#container_cart .backHome:active {
+  background-color: #666666; /* Color de fondo aún más oscuro */
+}
+
 
 #clean_cart {
   margin-bottom: 15px;
@@ -481,6 +514,7 @@
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  padding: 0 25px;
 }
 
 #container_dashboard button {

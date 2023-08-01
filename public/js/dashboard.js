@@ -1,5 +1,5 @@
 const cleanUsers = () => {
-    fetch(`${window.location.origin}/api/users/cleanOldUsers`)
+    fetch(`${window.location.protocol}//${window.location.host}/api/users/cleanOldUsers`)
         .then((result) => result.json())
         .then((res) => {
             if (res.status === "success") {
@@ -30,8 +30,11 @@ const cleanUsers = () => {
             }
 
         }).catch((err) => {
-            console.log("🚀 ~ file: dashboard.js:7 ~ fetch ~ err:", err)
-
+            Swal.fire({
+                position: "center",
+                icon: "error",
+                title: err.message,
+                showConfirmButton: false,
+            });
         });
-
 }
