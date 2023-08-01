@@ -1,7 +1,6 @@
 const CartRepository = require("../dao/repositories/cart.repository");
 const ProductRepository = require("../dao/repositories/product.repository");
 const UserRepository = require("../dao/repositories/user.repository");
-const { getUserByEmailService } = require("./user.service");
 
 const cartRepository = new CartRepository();
 const productRepository = new ProductRepository();
