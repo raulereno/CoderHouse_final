@@ -1,12 +1,17 @@
 const CartRepository = require("../dao/repositories/cart.repository");
 const ProductRepository = require("../dao/repositories/product.repository");
+const UserRepository = require("../dao/repositories/user.repository");
+const { getUserByEmailService } = require("./user.service");
 
 const cartRepository = new CartRepository();
-const productRepository = new ProductRepository()
-const getCartService = async (cartId) => {
+const productRepository = new ProductRepository();
+const userRepository = new UserRepository()
+const getCartService = async (username) => {
   try {
+    //Uso los repositorios para evitar el error de dependencia circular
+    const user = await userRepository.findUserByEmail(username)
 
-    let result = await cartRepository.getCartById(cartId);
+    let result = await cartRepository.getCartById(user.cartId);
 
     //Elimino todos los productos que se han borrado
     result.products = result?.products?.filter(e => {

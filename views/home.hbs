@@ -31,7 +31,7 @@
                         <p class="card-text price{{this._id}}">${{this.price}}</p>
                         <p class="card-text stock{{this._id}}">Stock: {{this.stock}}</p>
                         {{#if this.owner}}
-                        <p>Dueño: <strong>{{this.owner}}</strong> </p>
+                        <p class="card-text owner">Dueño: <strong>{{this.owner}}</strong> </p>
                         {{/if}}
                         <button id="buttonAddToCart_{{this._id}}" onclick="addToCart('{{this._id}}')"
                             class="btn btn-primary">Agregar

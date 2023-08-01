@@ -6,14 +6,13 @@ const {
   addManyProductsToCartService,
   updateQuantityProductService,
 } = require("../services/cart.service");
-const { getUserByEmailService } = require("../services/user.service");
+
 
 const getCart = async (req, res, next) => {
   try {
+    const username = req.user.username
 
-    const user = await getUserByEmailService(req.user.username)
-
-    const cart = await getCartService(user.cartId);
+    const cart = await getCartService(username);
 
     res.cookie("cartId", cart._id);
 

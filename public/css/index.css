@@ -315,6 +315,10 @@
 .card-text.stock {
   margin-bottom: 10px;
 }
+.card-text.owner {
+  font-size: 14px;
+}
+
 
 .btn.btn-primary {
   position: absolute;
