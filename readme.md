@@ -36,6 +36,19 @@ El archivo package.json contiene varios scripts útiles que podemos utilizar dur
 1. Crea un archivo .env en la raíz del proyecto para configurar las variables de entorno necesarias.
 1. Ejecuta npm run dev para iniciar la aplicación en modo de desarrollo.
 
+## Variables de entorno
+Para utilizar el proyecto debes configuras algunas variables de entorno en el archivo .env
+
+- PORT= *Puerto en el que quieres que se ejecute la app*
+- MONGO_URL= *url de conexión a mongoDB*
+- ADMIN_EMAIL= *El mail que quieras que sea de administrador, cuando te registras con el obtienes el privilegio de admin*
+- ADMIN_PASS= *La contraseña del administrador, si el mail y el password no coinciden no se hara administrador al usuario*
+- EMAIL_NODEMAILER= *El email el cual usaras para hacer mailing*
+- PASSWORD_NODEMAILER= *Password de nodemailer*
+- ENV= *Entorno, development o production*
+- API_URL_PROD= *Para el deploy de la app*
+- STRIPE_SECRET_KEY= *La secret key de Stripe para la pasarela de pagos*
+
 ## Contribuir
 Si deseas contribuir a este proyecto, te animamos a que lo hagas. Puedes crear un "fork" del repositorio y enviar tus mejoras mediante "pull requests". Antes de enviar un "pull request", asegúrate de ejecutar las pruebas automatizadas y de que tu código cumpla con las pautas de estilo.
 
